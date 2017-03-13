@@ -233,6 +233,7 @@ class Player extends Ship {
     sprite = setSprite;
     weapon = setWeapon;
     setSpeed(10);
+    setHp(10);
        
     pos = new PVector(width/2, height-100);
     //weapon = new BasicPlayerWeapon(pos, new PVector(0, 5));
@@ -244,6 +245,16 @@ class Player extends Ship {
   
   void render(){
     image(sprite, getPos().x, getPos().y);
-
+  }
+  void setX(float x){
+   if(x>5&&x<width-5){
+      pos.x = x;
+     }
+   }
+   
+   void setY(float y){
+     if(y>5&&y<height-5){
+       pos.y = y;
+    }
   }
 }

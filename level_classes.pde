@@ -1,21 +1,28 @@
 class Level extends ScreenObject {
+
   //PImage background;
   BackgroundScreen background;
+
+  PFont font;
+
   float scroll;
+
   PImage minion;
   PImage boss;
+
   Ship player1; 
   Ship finalBoss;
   boolean levelComplete;
   ArrayList<GameObject> shipObjects;
   ArrayList<GameObject> gameObjects;
-  
-  Level(){
+
+  Level() {
   }
   
   Level(Ship refPlayer1, ArrayList<GameObject> refShipObjects, ArrayList<GameObject> refGameObjects){
     background = new BackgroundScreen();
     //background = loadImage("level1.bmp");
+
     player1 = refPlayer1;
     levelComplete = false;
     shipObjects = refShipObjects;
@@ -23,8 +30,8 @@ class Level extends ScreenObject {
     minion = loadImage("Minion.png");
     boss = loadImage("BossLv.png");
   }
-  
-  void update(float dt){
+
+  void update(float dt) {
     scroll++;
     
     
@@ -39,52 +46,61 @@ class Level extends ScreenObject {
     }
     if (scroll == 1200){
       finalBoss = new BasicEnemy(new BasicEnemyController(player1.getPos()), width/2, 0, boss );
+
       //finalBoss = new MakeBig(finalBoss);
       shipObjects.add(finalBoss);
     }
-    
+
     //win level condition
-    if (finalBoss != null && finalBoss.remove){
+    if (finalBoss != null && finalBoss.remove) {
       levelComplete = true;
     }
     
     background.update(dt);
   }
-  void render(){
-   for(int i = 0;i <= 30;i++){
-     
-   }
-    
-    //image(background, background.width/2, scroll);
-   //image(background, background.width, scroll);
-   //image(background, background.width*2, scroll);
-   background.render();
+
+  void render() {
+    //image(background, background.width/2, scroll); //For alle andre...
+    //image(background, background.width*1.5, scroll);
+    //image(background, background.width*2.5, scroll);
+    image(background, background.width/2, scroll);
+    pushMatrix();
+    fill(0);
+    font = createFont("LDFComicSansLight.ttf", 50);
+    textFont(font);
+    text("HP " + player1.HP, 50, 100);
+    popMatrix();
+    background.render();
+
   }
-  
-  Level nextLevel(Ship refPlayer1, ArrayList<GameObject> refShipObjects, ArrayList<GameObject> refGameObjects){
-    
+
+  Level nextLevel(Ship refPlayer1, ArrayList<GameObject> refShipObjects, ArrayList<GameObject> refGameObjects) {
+
     refPlayer1.pos.x = width/2;
     refPlayer1.pos.y = height-100;
-    
+
     //bug when changing level... can you figure out why? ;)
     //refPlayer1.pos = new PVector(width/2, height-100);
     return new Level2(refPlayer1, refShipObjects, refGameObjects);
   }
 }
 
+
 class Level2 extends Level{
   
   Level2(Ship refPlayer1, ArrayList<GameObject> refShipObjects, ArrayList<GameObject> refGameObjects){
     //background = loadImage("level2.bmp");
     background = new BackgroundScreen();
+
+
     player1 = refPlayer1;
     shipObjects = refShipObjects;
     gameObjects = refGameObjects;
   }
-  
-  void update(float dt){
+
+  void update(float dt) {
     scroll++;
-    if (scroll == 100){
+    if (scroll == 100) {
       PowerUp foo = new PowerUp(new PVector(width/2, 1), 5);
       gameObjects.add(foo);
     }
@@ -101,6 +117,7 @@ class Level2 extends Level{
     }
     if (scroll == 1200){
       Ship bar = new BasicEnemy(new BasicEnemyController(player1.getPos()), width/2, 0, minion);
+
       bar = new MakeBig(bar);
       bar = new MakeBig(bar);
       shipObjects.add(bar);
@@ -116,5 +133,4 @@ class Level2 extends Level{
     
     
   }
-  
 }
