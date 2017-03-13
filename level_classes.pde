@@ -37,7 +37,7 @@ class Level extends ScreenObject {
       shipObjects.add(foo);
     }
     if (scroll == 1200) {
-      finalBoss = new BasicEnemy(new BasicEnemyController(player1.getPos()), new BasicPlayerWeapon(player1.pos, new PVector(0, 5)), width/2, 0, boss);
+      finalBoss = new BasicEnemy(new BasicEnemyController(player1.getPos()), new BasicPlayerWeapon(player1.pos, new PVector(0, 5), new PVector()), width/2, 0, boss);
       //finalBoss = new MakeBig(finalBoss);
       shipObjects.add(finalBoss);
     }

@@ -120,7 +120,7 @@ class Ship extends GameObject{
        setHp(10);
        
        pos = new PVector(width/2, height-100);
-       weapon = new BasicPlayerWeapon(pos, new PVector(0, 5));
+       weapon = new BasicPlayerWeapon(pos, new PVector(0, 5), new PVector());
     } 
   }
   
