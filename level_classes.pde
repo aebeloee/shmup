@@ -82,10 +82,10 @@ class Level2 extends Level {
     gameObjects = refGameObjects;
   }
 
-  void update(float dt) {
+  void update(float dt){
     scroll++;
-    if (scroll == 100) {
-      PowerUp foo = new PowerUp(new PVector(width/2, 1), 5);
+    if (scroll == 100){
+      FullHP foo = new FullHP(new PVector(width/2, 1), 5);
       gameObjects.add(foo);
     }
 
