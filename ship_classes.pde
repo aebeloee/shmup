@@ -148,11 +148,17 @@ class Ship extends GameObject{
       getWeapon().fire();
     }
     
+    if (controller.getSTATE() == 0){
+      getWeapon().ceaseFire();
+    }
+    
     //move ship
     setX(getX()+getDir().x*getSpeed());
     setY(getY()+getDir().y*getSpeed());
     
     getController().update(getPos());
+    
+    weapon.update(dt);
   }
   
   void render(){

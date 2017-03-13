@@ -48,6 +48,7 @@ class Weapon extends ScreenObject {
   boolean isShooting;
   PVector origin;
   PVector dir;
+  int b = 0;
 
   Weapon(PVector setOrigin) {
     origin = setOrigin;
@@ -58,7 +59,7 @@ class Weapon extends ScreenObject {
     origin = setOrigin;
     dir = setDir;
   }
-  int b = 0;
+  
   boolean fire() {
 
     isShooting = true;
@@ -83,6 +84,7 @@ class Weapon extends ScreenObject {
   }
 
   void update(float dt) {
+    
   }
 
   void setOrigin(PVector set) {
@@ -99,21 +101,17 @@ class BasicPlayerWeapon extends Weapon {
   BasicPlayerWeapon(PVector setOrigin, PVector setDir) {
     super(setOrigin, setDir);
   }
-  int bu = 0;
   boolean fire() {
-    isShooting = true;
-
-    if (bu == 10 || isShooting == false) {
-      bu = 0;
-    }
     
-    if (bu == 0 && isShooting == true) {
+    
+    if (b >= 20 || isShooting == false) {
       currentGame.gameObjects.add(new Bullet(origin, dir.y, true));
+      b=0;
     }
     
-    if (isShooting == true) {
-      bu++;
-    }
+      b++;
+ 
+    isShooting = true;
     return isShooting;
   }
 }
