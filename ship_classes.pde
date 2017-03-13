@@ -196,9 +196,11 @@ class Ship extends GameObject{
 
 class BasicEnemy extends Ship {
   
-   BasicEnemy(Controller setController, float setX, float setY){
+   BasicEnemy(Controller setController, float setX, float setY, PImage setSprite){
     controller = setController;
-    sprite = loadImage("Minion.png");
+    sprite = setSprite;
+    
+    //loadImage("Minion.png");
     
     pos = new PVector(setX, setY);
     dir = new PVector(0, 0);
