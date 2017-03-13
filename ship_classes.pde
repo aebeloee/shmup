@@ -243,6 +243,16 @@ class Player extends Ship {
   
   void render(){
     image(sprite, getPos().x, getPos().y);
-
+  }
+  void setX(float x){
+   if(x>5&&x<width-5){
+      pos.x = x;
+     }
+   }
+   
+   void setY(float y){
+     if(y>5&&y<height-5){
+       pos.y = y;
+    }
   }
 }
