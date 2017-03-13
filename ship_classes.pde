@@ -247,12 +247,20 @@ class Player extends Ship {
   void setX(float x){
    if(x>5&&x<width-5){
       pos.x = x;
+     }else if(x<5){
+     pos.x=6;
+     }else{
+     pos.x=width-6;
      }
    }
    
    void setY(float y){
      if(y>5&&y<height-5){
        pos.y = y;
-    }
+       }else if(y<5){
+       pos.y=6;
+     }else{
+       pos.y=height-6;
+     }
   }
 }
