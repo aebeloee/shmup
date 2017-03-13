@@ -44,8 +44,10 @@ class Level extends ScreenObject {
       shipObjects.add(bar);
       shipObjects.add(foo);
     }
+
     if (scroll == 1200){
       finalBoss = new BasicEnemy(new BasicEnemyController(player1.getPos()), width/2, 0, boss );
+
 
       //finalBoss = new MakeBig(finalBoss);
       shipObjects.add(finalBoss);
@@ -98,10 +100,10 @@ class Level2 extends Level{
     gameObjects = refGameObjects;
   }
 
-  void update(float dt) {
+  void update(float dt){
     scroll++;
-    if (scroll == 100) {
-      PowerUp foo = new PowerUp(new PVector(width/2, 1), 5);
+    if (scroll == 100){
+      FullHP foo = new FullHP(new PVector(width/2, 1), 5);
       gameObjects.add(foo);
     }
     if (scroll == 600){

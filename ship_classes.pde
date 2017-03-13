@@ -120,7 +120,7 @@ class Ship extends GameObject{
        setHp(10);
        
        pos = new PVector(width/2, height-100);
-       weapon = new BasicPlayerWeapon(pos, new PVector(0, 5));
+       weapon = new BasicPlayerWeapon(pos, new PVector(0, 5), new PVector());
     } 
   }
   
@@ -148,11 +148,17 @@ class Ship extends GameObject{
       getWeapon().fire();
     }
     
+    if (controller.getSTATE() == 0){
+      getWeapon().ceaseFire();
+    }
+    
     //move ship
     setX(getX()+getDir().x*getSpeed());
     setY(getY()+getDir().y*getSpeed());
     
     getController().update(getPos());
+    
+    weapon.update(dt);
   }
   
   void render(){
@@ -249,12 +255,20 @@ class Player extends Ship {
   void setX(float x){
    if(x>5&&x<width-5){
       pos.x = x;
+     }else if(x<5){
+     pos.x=6;
+     }else{
+     pos.x=width-6;
      }
    }
    
    void setY(float y){
      if(y>5&&y<height-5){
        pos.y = y;
-    }
+       }else if(y<5){
+       pos.y=6;
+     }else{
+       pos.y=height-6;
+     }
   }
 }
