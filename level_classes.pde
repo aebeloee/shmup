@@ -3,8 +3,6 @@ class Level extends ScreenObject {
   //PImage background;
   BackgroundScreen background;
 
-  PFont font;
-
   float scroll;
 
   PImage minion;
@@ -66,14 +64,7 @@ class Level extends ScreenObject {
     //image(background, background.width*1.5, scroll);
     //image(background, background.width*2.5, scroll);
     //image(background, background.width/2, scroll);
-    pushMatrix();
-    fill(0);
-    font = createFont("LDFComicSansLight.ttf", 50);
-    textFont(font);
-    text("HP " + player1.HP, 50, 100);
-    popMatrix();
     background.render();
-
   }
 
   Level nextLevel(Ship refPlayer1, ArrayList<GameObject> refShipObjects, ArrayList<GameObject> refGameObjects) {
@@ -123,16 +114,6 @@ class Level2 extends Level{
       bar = new MakeBig(bar);
       bar = new MakeBig(bar);
       shipObjects.add(bar);
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }   
   }
 }
